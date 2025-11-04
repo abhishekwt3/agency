@@ -28,21 +28,21 @@ import {
 } from "lucide-react"
 
 const auditFeatures = [
-  {
-    icon: Target,
-    title: "Conversion Funnel Analysis",
-    description: "Identify exactly where visitors drop off in your sales process",
-  },
+  // {
+  //   icon: Target,
+  //   title: "Conversion Funnel Analysis",
+  //   description: "Identify exactly where visitors drop off in your sales process",
+  // },
   {
     icon: BarChart3,
     title: "Page Performance Review",
     description: "Speed, mobile optimization, and user experience assessment",
   },
-  {
-    icon: TrendingUp,
-    title: "Checkout Optimization",
-    description: "Cart abandonment analysis and checkout flow improvements",
-  },
+  // {
+  //   icon: TrendingUp,
+  //   title: "Checkout Optimization",
+  //   description: "Cart abandonment analysis and checkout flow improvements",
+  // },
   {
     icon: Zap,
     title: "Quick Win Recommendations",
@@ -266,17 +266,16 @@ export function CroAudit() {
               <div className="text-center mb-16">
                 <div className="inline-flex items-center bg-gradient-to-r from-primary/10 to-accent/10 rounded-full px-4 py-2 mb-6">
                   <Target className="h-4 w-4 text-primary mr-2" />
-                  <span className="text-sm font-medium text-primary">Free CRO Analysis</span>
+                  <span className="text-sm font-medium text-primary">Free Product Page Analysis</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-6">
                   Get Your Free
                   <span className="block text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text">
-                    5-Point CRO Audit Report
+                   Product Page Report
                   </span>
                 </h2>
                 <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
-                  Enter your website URL and get a comprehensive conversion rate optimization report using our advanced
-                  5-point framework analysis.
+                  Check your store's performance with our 5-point framework analysis and get a free AI-powered CRO report in 60 seconds.
                 </p>
               </div>
 
@@ -334,7 +333,7 @@ export function CroAudit() {
                 <div className="lg:pl-8">
                   <Card className="bg-background/80 backdrop-blur-sm border-primary/20 shadow-2xl">
                     <CardHeader className="text-center px-4 sm:px-6">
-                      <CardTitle className="text-xl sm:text-2xl">Start Your Free CRO Audit</CardTitle>
+                      <CardTitle className="text-xl sm:text-2xl">Enter Your Product Page URL</CardTitle>
                       <CardDescription>Get your AI-powered conversion optimization report instantly</CardDescription>
                     </CardHeader>
                     <CardContent className="px-4 sm:px-6">
@@ -351,12 +350,12 @@ export function CroAudit() {
                         <div className="space-y-4">
                           <div>
                             <label htmlFor="website" className="block text-sm font-medium mb-2">
-                              Website URL *
+                              Produt Page URL *
                             </label>
                             <Input
                               id="website"
                               type="url"
-                              placeholder="https://yourstore.com"
+                              placeholder="https://yourstore.com/t-shirts/tencel-tshirt-orange"
                               value={website}
                               onChange={(e) => setWebsite(e.target.value)}
                               required

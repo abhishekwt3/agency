@@ -20,7 +20,7 @@ export function Hero() {
 
             {/* Headline */}
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-balance">
-              Increase order volumes at least<span className="font-medium"> by 15% </span> within 2 weeks
+              Increase your order volumes<span className="font-medium"> by 15% </span> within 2 weeks
             </h1>
 
             {/* Subcopy */}
@@ -32,19 +32,19 @@ export function Hero() {
 
             {/* CTAs */}
             <div className="mt-7 flex flex-col sm:flex-row items-center gap-4">
-              <Button size="lg" className="rounded-full px-6 py-5 bg-foreground text-background hover:bg-foreground/90">
-                <a href="#cro-audit">Free CRO Test</a>
+              <Button size="lg" className="rounded-full px-4 py-5 text-background bg-teal-900 hover:bg-teal-950">
+                <a href="#cro-audit">Get Your Free Report ✌️</a>
               </Button>
-              <BookingModal>
+              {/* <BookingModal>
                 <Button size="lg" className="rounded-full px-6 py-5 bg-black text-white hover:bg-gray-800">
-                Free Strategy Call
+                Book Call
                 </Button>
-              </BookingModal>
+              </BookingModal> */}
             </div>
 
             {/* Trust bar */}
-            {/* <div className="mt-10">
-              <div className="text-xs text-muted-foreground mb-3">Trusted by the world’s biggest brands</div>
+            <div className="mt-10">
+              <div className="text-xs text-muted-foreground mb-3">Trusted by the D2C e-commerce brands</div>
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center opacity-80">
                 {["afterpay", "Basecamp", "maze", "cocokind", "TOZO", "Bellefit"].map((b) => (
                   <div key={b} className="text-sm text-muted-foreground text-center tracking-wide">
@@ -52,7 +52,7 @@ export function Hero() {
                   </div>
                 ))}
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Right: Gradient base + 4 floating images */}

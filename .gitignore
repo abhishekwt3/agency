@@ -7,7 +7,6 @@
 /.next/
 /out/
 
-/public
 
 # production
 /build
@@ -27,3 +26,24 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+public/gnr-img.png
+public/growth-img.png
+public/inventory-management-dashboard-interface.jpg
+public/main-product.jpg
+public/modern-fashion-ecommerce.png
+public/placeholder-logo.png
+public/placeholder-logo.svg
+public/placeholder-user.jpg
+public/placeholder.jpg
+public/placeholder.svg
+public/polo-product.png
+public/prod.png
+public/review.jpg
+public/banner.jpg
+public/beauty-cosmetics-online-store.jpg
+public/cart-add.jpg
+public/ctr.jpg
+public/electronics-gadgets-online-store.jpg
+public/images/

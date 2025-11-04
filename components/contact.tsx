@@ -98,7 +98,7 @@ export function Contact() {
                 <span className="text-3xl font-medium">$100 - $500</span>
                 <span className="text-sm text-muted-foreground">per project</span>
               </div>
-              <Button className="w-full" size="lg">
+              <Button className="w-full bg-teal-900 hover:bg-teal-950" size="lg">
                 Start with Foundation CRO
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -108,7 +108,7 @@ export function Contact() {
           {/* Path B: Dynamic CRO */}
           <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-6 sm:p-8 border-2 border-primary/30 hover:border-primary/50 transition-all hover:shadow-xl relative overflow-hidden">
             <div className="absolute top-4 right-4">
-              <div className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
+              <div className="bg-teal-900 text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
                 RECOMMENDED
               </div>
             </div>
@@ -155,7 +155,7 @@ export function Contact() {
                 <span className="text-3xl font-medium">$1,000 - $5,000</span>
                 <span className="text-sm text-muted-foreground">per project</span>
               </div>
-              <Button className="w-full bg-primary hover:bg-primary/90" size="lg">
+              <Button className="w-full bg-teal-900 hover:bg-teal-950" size="lg">
                 Start with Dynamic CRO
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -222,8 +222,8 @@ export function Contact() {
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="development">Shopify Development</SelectItem>
-                        <SelectItem value="migration">Store Migration</SelectItem>
+                        <SelectItem value="development">Foundation CRO</SelectItem>
+                        <SelectItem value="migration">Dynamic CRO</SelectItem>
                         <SelectItem value="app">Custom App Development</SelectItem>
                         <SelectItem value="marketing">Meta Marketing</SelectItem>
                         <SelectItem value="optimization">Store Optimization</SelectItem>
@@ -245,7 +245,7 @@ export function Contact() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full h-11" disabled={isSubmitting}>
+                  <Button type="submit" size="lg" className="w-full h-11 bg-teal-900 hover:bg-teal-950" disabled={isSubmitting}>
                     {isSubmitting ? "Sending..." : "Send Message"}
                     <Send className="ml-2 h-4 w-4" />
                   </Button>
@@ -274,21 +274,21 @@ export function Contact() {
                     <div className="text-xs sm:text-sm text-muted-foreground">+1 (555) 123-4567</div>
                   </div>
                 </div>
-                <div className="flex items-center space-x-3">
+                {/* <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
                   <div className="min-w-0">
                     <div className="font-medium text-sm">Location</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">Remote & Global</div>
                   </div>
-                </div>
+                </div> */}
               </CardContent>
             </Card>
 
-            <Card className="bg-primary text-primary-foreground">
+            <Card className="bg-teal-900 text-primary-foreground">
               <CardContent className="p-4 sm:p-6">
                 <h3 className="font-semibold mb-2 text-sm sm:text-base">Free Consultation</h3>
                 <p className="text-xs sm:text-sm opacity-90 mb-4">
-                  Book a 30-minute strategy call to discuss your Shopify goals and get expert advice.
+                  Book a 30-minute strategy call to discuss your goals and get expert advice.
                 </p>
                 <Button variant="secondary" size="sm" className="w-full h-9">
                   Schedule Call

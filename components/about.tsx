@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Award, Users, Rocket, Sparkles, TrendingUp } from "lucide-react"
 
 const stats = [
@@ -48,52 +47,61 @@ export function About() {
       </div>
 
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="animate-slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Your Trusted Shopify Partner</h2>
-            <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-              <p className="relative">
-                We're a full-service Shopify development and Meta marketing agency dedicated to helping businesses
-                succeed in the e-commerce space. Our team combines deep technical expertise with proven marketing
-                strategies.
-                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-accent rounded-full opacity-30" />
-              </p>
-              <p>
-                From custom app development and store migrations to targeted Facebook advertising and conversion
-                optimization, we handle every aspect of your Shopify success story.
-              </p>
-              <p>
-                Our published apps in the Shopify App Store demonstrate our advanced capabilities, while our marketing
-                campaigns have generated millions in revenue for our clients.
-              </p>
+        <div className="animate-slide-up max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl text-balance mb-6">About us</h2>
+          <div className="space-y-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
+            <p className="relative pl-4">
+              We are a conversion-focused e-commerce agency committed to helping brands achieve measurable, long-term
+              growth. Our expertise lies in <strong className="font-semibold">Conversion Rate Optimization (CRO), ad performance optimization, and store
+              experience enhancement </strong>— ensuring every visitor, click, and campaign contributes directly to revenue
+              growth.
+              <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-accent rounded-full opacity-30" />
+            </p>
+            <p>
+              We work on design precision, behavioral analytics, and marketing intelligence to improve key growth
+              metrics such as <strong className="font-semibold">Average Order Value (AOV), Order Volume (OV), and Brand Equity.</strong> We focus on
+              creating a seamless ecosystem where your store design, user experience, and paid media strategy work
+              together to drive consistent, scalable results.
+            </p>
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold mb-4 text-foreground">Core Services</h3>
+              <ul className="space-y-3 text-sm sm:text-base">
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>
+                    <strong>Foundation CRO (Design-Based):</strong> Build a high-performing, trustworthy, and visually
+                    optimized storefront designed for fast loading, intuitive navigation, and conversion-focused
+                    layouts.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>
+                    <strong>Dynamic CRO (Behavior-Based):</strong> Implement adaptive personalization, behavioral
+                    targeting, and A/B testing to enhance engagement and boost AOV and lifetime value.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>
+                    <strong>Ad Optimization:</strong> Refine Meta campaign structures, targeting, and creatives to
+                    maximize ROAS and align ad performance with on-site conversion goals.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <span>
+                    <strong>Store Performance Enhancement:</strong> Conduct comprehensive audits to identify performance
+                    bottlenecks, optimize page speed, and improve the end-to-end customer experience.
+                  </span>
+                </li>
+              </ul>
             </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-6">
-            {stats.map((stat, index) => (
-              <Card
-                key={index}
-                className={`text-center p-6 bg-gradient-to-br ${stat.gradient} border-0 hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer animate-scale-in`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="space-y-4">
-                  <div
-                    className={`w-12 h-12 ${stat.bgColor} rounded-lg flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 group-hover:animate-glow`}
-                  >
-                    <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
-                  </div>
-                  <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text group-hover:animate-gradient">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                    {stat.label}
-                  </div>
-                  <div className="w-full h-1 bg-secondary rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-primary to-accent rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            <p className="pt-4">
+              Though we are a young agency, our team brings deep expertise in e-commerce growth strategy, CRO, and
+              marketing optimization — helping brands convert better, scale faster, and strengthen their overall market
+              presence.
+            </p>
           </div>
         </div>
       </div>

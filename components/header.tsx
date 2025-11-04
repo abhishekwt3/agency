@@ -14,26 +14,26 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Brand */}
           <div className="flex items-center gap-2">
-            <span className="inline-block h-5 w-5 rounded-[4px] bg-foreground" aria-hidden />
-            <h1 className="text-xl font-semibold">Reach.ist</h1>
+          <img src="https://ik.imagekit.io/90xvn3fidvl/g10_t2fO-xv6A.png" alt="Reach.ist logo" className="h-5 w-5" />
+          <a href="/"><h1 className="text-xl font-semibold">Reach.ist</h1></a>
           </div>
 
           {/* Desktop nav */}
           <nav className="hidden md:block">
             <div className="ml-10 flex items-center gap-8 text-sm">
-              <a href="#services" className="text-foreground/90 hover:text-foreground transition-colors">
+              <a href="/#services" className="text-foreground/90 hover:text-foreground transition-colors">
                 Services
               </a>
               <a href="/blog" className="text-foreground/90 hover:text-foreground transition-colors">
                 Case Studies
               </a>
-              <a href="#cro-audit" className="text-foreground/90 hover:text-foreground transition-colors">
+              <a href="/#cro-audit" className="text-foreground/90 hover:text-foreground transition-colors">
                 CRO Test
               </a>
-              <a href="#pricing" className="text-foreground/90 hover:text-foreground transition-colors">
+              <a href="/#pricing" className="text-foreground/90 hover:text-foreground transition-colors">
                 Pricing
               </a>
-              <a href="#contact" className="text-foreground/90 hover:text-foreground transition-colors">
+              <a href="/#contact" className="text-foreground/90 hover:text-foreground transition-colors">
                 Contact
               </a>
             </div>
@@ -42,7 +42,7 @@ export function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:block">
             <BookingModal>
-              <Button className="rounded-full bg-foreground text-background hover:bg-foreground/90">
+              <Button className="rounded-full text-background bg-teal-900 hover:bg-teal-950">
                 Book Call
               </Button>
             </BookingModal>
