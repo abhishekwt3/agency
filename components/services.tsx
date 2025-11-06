@@ -19,13 +19,13 @@ export function Services() {
       <div className="container mx-auto">
         {/* Hero Hook */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-light mb-6 text-balance">
+          <h2 className="text-5xl sm:text-4xl lg:text-6xl font-light mb-6 text-balance">
             Turn More Visitors Into
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent block font-medium">
               Paying Customers
             </span>
           </h2>
-          <p className="text-2xl text-muted-foreground mb-4 text-pretty max-w-4xl mx-auto font-light">
+          <p className="lg:text-3xl md:text-2xl sm:text-xl text-muted-foreground mb-4 text-pretty max-w-4xl mx-auto font-light">
             Without spending more on ads. Increase your E-commerce store's conversion rate (conversion rate = number of purchases / total visitors) with our proven CRO
             strategies.
           </p>

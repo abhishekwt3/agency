@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { Calendar, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,13 +9,27 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 import { format, isSunday } from "date-fns"
+import { useToast } from "@/components/ui/use-toast"
 
 const HOLIDAYS = [
   new Date(2025, 0, 1), // New Year
   new Date(2025, 11, 25), // Christmas
 ]
 
-const TIME_SLOTS = ["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"]
+const TIME_SLOTS = [
+  "09:00 AM",
+  "09:30 AM",
+  "10:00 AM",
+  "11:00 AM",
+  "12:00 PM",
+  "02:00 PM",
+  "02:30 PM",
+  "03:00 PM",
+  "04:00 PM",
+  "04:30 PM",
+  "05:00 PM",
+  "05:30 PM",
+]
 
 interface BookingModalProps {
   children: React.ReactNode
@@ -30,20 +42,18 @@ export function BookingModal({ children }: BookingModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    mobile: "",
     message: "",
   })
   const [loading, setLoading] = useState(false)
+  const { toast } = useToast()
 
-  const isDateDisabled = (date: Date) => {
-    return isSunday(date) || HOLIDAYS.some((holiday) => holiday.toDateString() === date.toDateString())
-  }
+  const isDateDisabled = (date: Date) =>
+    isSunday(date) || HOLIDAYS.some((holiday) => holiday.toDateString() === date.toDateString())
 
   const handleDateSelect = (date: Date | undefined) => {
-    if (date && !isDateDisabled(date)) {
-      setSelectedDate(date)
-    } else if (!date) {
-      setSelectedDate(undefined)
-    }
+    if (date && !isDateDisabled(date)) setSelectedDate(date)
+    else if (!date) setSelectedDate(undefined)
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -54,14 +64,18 @@ export function BookingModal({ children }: BookingModalProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!selectedDate || !selectedTime || !formData.name || !formData.email) {
-      alert("Please fill in all required fields")
+    if (!selectedDate || !selectedTime || !formData.name || !formData.email || !formData.mobile) {
+      toast({
+        title: "Missing Fields",
+        description: "Please fill in all required fields before submitting.",
+        variant: "destructive",
+      })
       return
     }
 
     setLoading(true)
     try {
-      const response = await fetch("/api/bookings", {
+      const response = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -69,23 +83,36 @@ export function BookingModal({ children }: BookingModalProps) {
           time: selectedTime,
           name: formData.name,
           email: formData.email,
+          mobile: formData.mobile,
           message: formData.message,
           createdAt: new Date().toISOString(),
         }),
       })
 
       if (response.ok) {
-        alert("Booking confirmed! We will contact you shortly.")
+        toast({
+          title: "Booking Confirmed 🎉",
+          description: "Your strategy call has been successfully booked.",
+        })
         setOpen(false)
         setSelectedDate(undefined)
         setSelectedTime("")
-        setFormData({ name: "", email: "", message: "" })
+        setFormData({ name: "", email: "", mobile: "", message: "" })
       } else {
-        alert("Failed to save booking. Please try again.")
+        const err = await response.json()
+        toast({
+          title: "Booking Failed",
+          description: err.error || "Unable to save your booking. Please try again.",
+          variant: "destructive",
+        })
       }
     } catch (error) {
       console.error("Booking error:", error)
-      alert("An error occurred. Please try again.")
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      })
     } finally {
       setLoading(false)
     }
@@ -103,16 +130,16 @@ export function BookingModal({ children }: BookingModalProps) {
       </Button>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto w-[95vw] max-w-md sm:max-w-2xl rounded-lg">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto w-[95vw] sm:max-w-2xl rounded-lg">
           <DialogHeader>
             <DialogTitle className="text-xl sm:text-2xl font-bold">Book Your Strategy Call</DialogTitle>
           </DialogHeader>
 
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            {/* Date Picker */}
             <div className="space-y-3">
               <Label className="text-sm sm:text-base font-semibold flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                Select Date
+                <Calendar className="w-4 h-4" /> Select Date
               </Label>
               <div className="flex justify-center overflow-x-auto">
                 <CalendarComponent
@@ -130,10 +157,10 @@ export function BookingModal({ children }: BookingModalProps) {
               )}
             </div>
 
+            {/* Time Picker */}
             <div className="space-y-3">
               <Label className="text-sm sm:text-base font-semibold flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                Select Time
+                <Clock className="w-4 h-4" /> Select Time
               </Label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {TIME_SLOTS.map((time) => (
@@ -142,7 +169,9 @@ export function BookingModal({ children }: BookingModalProps) {
                     type="button"
                     onClick={() => setSelectedTime(time)}
                     className={`py-2 px-3 rounded-md text-xs sm:text-sm font-medium transition-colors ${
-                      selectedTime === time ? "bg-black text-white" : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                      selectedTime === time
+                        ? "bg-black text-white"
+                        : "bg-gray-100 text-gray-900 hover:bg-gray-200"
                     }`}
                   >
                     {time}
@@ -151,11 +180,10 @@ export function BookingModal({ children }: BookingModalProps) {
               </div>
             </div>
 
+            {/* Form Fields */}
             <div className="space-y-3 sm:space-y-4">
               <div>
-                <Label htmlFor="name" className="text-xs sm:text-sm font-medium">
-                  Full Name *
-                </Label>
+                <Label htmlFor="name">Full Name *</Label>
                 <Input
                   id="name"
                   name="name"
@@ -168,9 +196,7 @@ export function BookingModal({ children }: BookingModalProps) {
               </div>
 
               <div>
-                <Label htmlFor="email" className="text-xs sm:text-sm font-medium">
-                  Email Address *
-                </Label>
+                <Label htmlFor="email">Email Address *</Label>
                 <Input
                   id="email"
                   name="email"
@@ -184,9 +210,22 @@ export function BookingModal({ children }: BookingModalProps) {
               </div>
 
               <div>
-                <Label htmlFor="message" className="text-xs sm:text-sm font-medium">
-                  Message (Optional)
-                </Label>
+                <Label htmlFor="mobile">Mobile Number *</Label>
+                <Input
+                  id="mobile"
+                  name="mobile"
+                  type="tel"
+                  pattern="[0-9]{10}"
+                  value={formData.mobile}
+                  onChange={handleInputChange}
+                  placeholder="9876543210"
+                  required
+                  className="mt-1 text-sm"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="message">Message (Optional)</Label>
                 <Textarea
                   id="message"
                   name="message"
@@ -199,6 +238,7 @@ export function BookingModal({ children }: BookingModalProps) {
               </div>
             </div>
 
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-4">
               <Button
                 type="submit"
@@ -219,13 +259,6 @@ export function BookingModal({ children }: BookingModalProps) {
           </form>
         </DialogContent>
       </Dialog>
-      <style>{`
-        .react-day-picker-root [role="button"][aria-pressed="true"] {
-          background-color: transparent !important;
-          border: 2px solid rgb(0, 0, 0) !important;
-          color: rgb(0, 0, 0) !important;
-        }
-      `}</style>
     </>
   )
 }

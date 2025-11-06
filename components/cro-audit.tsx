@@ -10,7 +10,6 @@ import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import {
   CheckCircle,
-  TrendingUp,
   Target,
   BarChart3,
   Zap,
@@ -217,7 +216,7 @@ export function CroAudit() {
     setAnalysisResult(null)
 
     try {
-      const response = await fetch("http://localhost:8080/api/analyze", {
+      const response = await fetch("http://api.reach.ist/api/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

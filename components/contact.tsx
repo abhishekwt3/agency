@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight, Star } from "lucide-react"
+import { Mail, Phone, Send, CheckCircle, ArrowRight, Star } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { BookingModal } from "@/components/booking-modal"
 
@@ -95,7 +95,7 @@ export function Contact() {
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-muted-foreground">Checkout flow improvement & optimization</p>
+                <p className="text-sm text-muted-foreground">PLP & Checkout flow optimization</p>
               </div>
             </div>
 
@@ -297,16 +297,9 @@ export function Contact() {
                   <Phone className="h-5 w-5 text-primary flex-shrink-0" />
                   <div className="min-w-0">
                     <div className="font-medium text-sm">Phone</div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">+1 (555) 123-4567</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">+91 999 9029-852</div>
                   </div>
                 </div>
-                {/* <div className="flex items-center space-x-3">
-                  <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
-                  <div className="min-w-0">
-                    <div className="font-medium text-sm">Location</div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Remote & Global</div>
-                  </div>
-                </div> */}
               </CardContent>
             </Card>
 
@@ -316,9 +309,11 @@ export function Contact() {
                 <p className="text-xs sm:text-sm opacity-90 mb-4">
                   Book a 30-minute strategy call to discuss your goals and get expert advice.
                 </p>
-                <Button variant="secondary" size="sm" className="w-full h-9">
-                  Schedule Call
-                </Button>
+                <BookingModal>
+                  <Button variant="secondary" size="sm" className="w-full h-9">
+                    Schedule Call
+                  </Button>
+                </BookingModal>
               </CardContent>
             </Card>
           </div>

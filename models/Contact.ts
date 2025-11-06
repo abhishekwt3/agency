@@ -1,0 +1,13 @@
+import mongoose, { Schema, models } from "mongoose"
+
+const ContactSchema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  company: { type: String },
+  service: { type: String },
+  mobile: { type: String, required: true },
+  message: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+})
+
+export default models.Contact || mongoose.model("Contact", ContactSchema)
