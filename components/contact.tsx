@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight, Star } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { BookingModal } from "@/components/booking-modal"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ export function Contact() {
     company: "",
     service: "",
     message: "",
+    mobile: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
@@ -34,7 +36,7 @@ export function Contact() {
       if (!res.ok) throw new Error("Failed to submit")
       toast({ title: "Message received", description: "We will get back to you shortly." })
       // Reset form
-      setFormData({ name: "", email: "", company: "", service: "", message: "" })
+      setFormData({ name: "", email: "", company: "", service: "", message: "", mobile: "" })
     } catch (err: any) {
       toast({ title: "Something went wrong", description: err?.message ?? "Please try again.", variant: "destructive" })
     } finally {
@@ -89,19 +91,25 @@ export function Contact() {
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-muted-foreground">Strategic CTA placement & hierarchy</p>
+                <p className="text-sm text-muted-foreground">Strategic CTA placement & Navigation hierarchy</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-muted-foreground">Checkout flow improvement & optimization</p>
               </div>
             </div>
 
             <div className="pt-6 border-t border-border/50">
-              <div className="flex items-baseline gap-2 mb-4">
+              {/* <div className="flex items-baseline gap-2 mb-4">
                 <span className="text-3xl font-medium">$100 - $500</span>
                 <span className="text-sm text-muted-foreground">per project</span>
-              </div>
+              </div> */}
+              <BookingModal>
               <Button className="w-full bg-teal-900 hover:bg-teal-950" size="lg">
                 Start with Foundation CRO
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+              </BookingModal>
             </div>
           </div>
 
@@ -151,14 +159,16 @@ export function Contact() {
             </div>
 
             <div className="pt-6 border-t border-primary/20">
-              <div className="flex items-baseline gap-2 mb-4">
+              {/* <div className="flex items-baseline gap-2 mb-4">
                 <span className="text-3xl font-medium">$1,000 - $5,000</span>
                 <span className="text-sm text-muted-foreground">per project</span>
-              </div>
+              </div> */}
+              <BookingModal>
               <Button className="w-full bg-teal-900 hover:bg-teal-950" size="lg">
                 Start with Dynamic CRO
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+              </BookingModal>
             </div>
           </div>
         </div>
@@ -204,7 +214,6 @@ export function Contact() {
                       />
                     </div>
                   </div>
-
                   <div className="space-y-2">
                     <Label htmlFor="company">Company</Label>
                     <Input
@@ -214,6 +223,23 @@ export function Contact() {
                       className="h-10"
                     />
                   </div>
+                  <div className="space-y-2">
+                      <Label htmlFor="mobile">Mobile Number *</Label>
+                      <Input
+                        id="mobile"
+                        type="tel"
+                        value={formData.mobile}
+                        onChange={(e) => {
+                          const value = e.target.value.replace(/\D/g, ""); // allow only digits
+                          if (value.length <= 10) handleChange("mobile", value);
+                        }}
+                        required
+                        pattern="\d{10}"
+                        maxLength={10}
+                        placeholder="Enter 10-digit mobile number"
+                        className="h-10"
+                      />
+                    </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="service">Service Needed</Label>

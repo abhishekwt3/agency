@@ -11,8 +11,7 @@ export function Footer() {
             <h3 className="text-xl sm:text-2xl font-semibold leading-none">Reach.ist</h3>
             </div>
             <p className=" mb-4 max-w-md leading-relaxed text-sm sm:text-base">
-              Full-service e-commerce development and conversion rate optimization agency. We handle everything from building your store to driving customers to it—and converting them into sales.
-            </p>
+            We help e-commerce companies build long-term brand value and customer trust. Our expertise lies in Conversion Rate Optimization (CRO), Ad Performance Optimization, and Store Experience Enhancement.</p>
             <div className="text-xs sm:text-sm ">© 2025 Reach.ist. All rights reserved.</div>
           </div>
 
@@ -20,7 +19,7 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-sm sm:text-base">Services</h4>
             <ul className="space-y-2 text-xs sm:text-sm ">
               <li>
-                <a href="#services" className="hover:text-primary-foreground transition-colors">
+                <a href="/#services" className="hover:text-primary-foreground transition-colors">
                   Foundation CRO
                 </a>
               </li>
@@ -30,17 +29,17 @@ export function Footer() {
                 </a>
               </li>
                <li>
-                <a href="#services" className="hover:text-primary-foreground transition-colors">
+                <a href="/#services" className="hover:text-primary-foreground transition-colors">
                   Shopify Development
                 </a>
               </li>
               <li>
-                <a href="#cro-audit" className="hover:text-primary-foreground transition-colors">
+                <a href="/#cro-audit" className="hover:text-primary-foreground transition-colors">
                   E-commerce Store Audit
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-primary-foreground transition-colors">
+                <a href="/#services" className="hover:text-primary-foreground transition-colors">
                  Meta Marketing Optimisation
                 </a>
               </li>
@@ -78,7 +77,7 @@ export function Footer() {
         <Separator className="my-6 sm:my-8 bg-primary-foreground/20" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm">
-          <div className="text-center sm:text-left">Empowering brands through growth and meaningful customer experiences.
+          <div className="text-center sm:text-left">Empowering brands through meaningful customer experiences.
 </div>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             <a href="/privacy" className="hover:text-primary-foreground transition-colors">

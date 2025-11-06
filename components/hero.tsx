@@ -20,7 +20,7 @@ export function Hero() {
 
             {/* Headline */}
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-balance">
-              Increase your order volumes<span className="font-medium"> by 15% </span> within 2 weeks
+              Don't just keep spending on Ads<span className="font-medium"> Uplift sales</span> within CRO
             </h1>
 
             {/* Subcopy */}

@@ -26,7 +26,7 @@ export function Services() {
             </span>
           </h2>
           <p className="text-2xl text-muted-foreground mb-4 text-pretty max-w-4xl mx-auto font-light">
-            Without spending more on ads. Increase your Shopify conversion rate from 2% to 4-6%+ with our proven CRO
+            Without spending more on ads. Increase your E-commerce store's conversion rate (conversion rate = number of purchases / total visitors) with our proven CRO
             strategies.
           </p>
           <div className="inline-flex items-center bg-primary/10 rounded-full px-6 py-3 text-primary font-medium">

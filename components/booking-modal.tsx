@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+
 import { useState } from "react"
 import { Calendar, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -16,7 +17,7 @@ const HOLIDAYS = [
   new Date(2025, 11, 25), // Christmas
 ]
 
-const TIME_SLOTS = ["09:00 AM","09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM"]
+const TIME_SLOTS = ["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"]
 
 interface BookingModalProps {
   children: React.ReactNode
@@ -92,38 +93,45 @@ export function BookingModal({ children }: BookingModalProps) {
 
   return (
     <>
-      <div onClick={() => setOpen(true)} className="cursor-pointer">
-        {children}
-      </div>
+      <Button
+        onClick={() => setOpen(true)}
+        variant="ghost"
+        className="p-0 h-auto font-inherit text-inherit hover:bg-transparent"
+        asChild
+      >
+        <div>{children}</div>
+      </Button>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto w-[95vw] max-w-md sm:max-w-2xl rounded-lg">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">Book Your Strategy Call</DialogTitle>
+            <DialogTitle className="text-xl sm:text-2xl font-bold">Book Your Strategy Call</DialogTitle>
           </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div className="space-y-3">
-              <Label className="text-base font-semibold flex items-center gap-2">
+              <Label className="text-sm sm:text-base font-semibold flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 Select Date
               </Label>
-              <div className="flex justify-center">
+              <div className="flex justify-center overflow-x-auto">
                 <CalendarComponent
                   mode="single"
                   selected={selectedDate}
                   onSelect={handleDateSelect}
                   disabled={isDateDisabled}
-                  className="rounded-md border"
+                  className="rounded-md border text-sm"
                 />
               </div>
               {selectedDate && (
-                <p className="text-sm text-muted-foreground">Selected: {format(selectedDate, "EEEE, MMMM d, yyyy")}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">
+                  Selected: {format(selectedDate, "EEEE, MMMM d, yyyy")}
+                </p>
               )}
             </div>
 
             <div className="space-y-3">
-              <Label className="text-base font-semibold flex items-center gap-2">
+              <Label className="text-sm sm:text-base font-semibold flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 Select Time
               </Label>
@@ -133,7 +141,7 @@ export function BookingModal({ children }: BookingModalProps) {
                     key={time}
                     type="button"
                     onClick={() => setSelectedTime(time)}
-                    className={`py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                    className={`py-2 px-3 rounded-md text-xs sm:text-sm font-medium transition-colors ${
                       selectedTime === time ? "bg-black text-white" : "bg-gray-100 text-gray-900 hover:bg-gray-200"
                     }`}
                   >
@@ -143,9 +151,9 @@ export function BookingModal({ children }: BookingModalProps) {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
-                <Label htmlFor="name" className="text-sm font-medium">
+                <Label htmlFor="name" className="text-xs sm:text-sm font-medium">
                   Full Name *
                 </Label>
                 <Input
@@ -155,12 +163,12 @@ export function BookingModal({ children }: BookingModalProps) {
                   onChange={handleInputChange}
                   placeholder="John Doe"
                   required
-                  className="mt-1"
+                  className="mt-1 text-sm"
                 />
               </div>
 
               <div>
-                <Label htmlFor="email" className="text-sm font-medium">
+                <Label htmlFor="email" className="text-xs sm:text-sm font-medium">
                   Email Address *
                 </Label>
                 <Input
@@ -171,12 +179,12 @@ export function BookingModal({ children }: BookingModalProps) {
                   onChange={handleInputChange}
                   placeholder="john@example.com"
                   required
-                  className="mt-1"
+                  className="mt-1 text-sm"
                 />
               </div>
 
               <div>
-                <Label htmlFor="message" className="text-sm font-medium">
+                <Label htmlFor="message" className="text-xs sm:text-sm font-medium">
                   Message (Optional)
                 </Label>
                 <Textarea
@@ -185,23 +193,39 @@ export function BookingModal({ children }: BookingModalProps) {
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Tell us about your business..."
-                  className="mt-1 resize-none"
+                  className="mt-1 resize-none text-sm"
                   rows={3}
                 />
               </div>
             </div>
 
-            <div className="flex gap-3 pt-4">
-              <Button type="submit" disabled={loading} className="flex-1 bg-black text-white hover:bg-gray-800">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-4">
+              <Button
+                type="submit"
+                disabled={loading}
+                className="flex-1 bg-black text-white hover:bg-gray-800 text-sm sm:text-base"
+              >
                 {loading ? "Booking..." : "Confirm Booking"}
               </Button>
-              <Button type="button" variant="outline" onClick={() => setOpen(false)} className="flex-1">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setOpen(false)}
+                className="flex-1 text-sm sm:text-base"
+              >
                 Cancel
               </Button>
             </div>
           </form>
         </DialogContent>
       </Dialog>
+      <style>{`
+        .react-day-picker-root [role="button"][aria-pressed="true"] {
+          background-color: transparent !important;
+          border: 2px solid rgb(0, 0, 0) !important;
+          color: rgb(0, 0, 0) !important;
+        }
+      `}</style>
     </>
   )
 }

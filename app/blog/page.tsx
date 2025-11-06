@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const posts = [
   {
@@ -6,18 +8,22 @@ const posts = [
     title: "Scale Revenue Without Scaling Ad Spend",
     excerpt: "A practical CRO playbook for Shopify stores to unlock 20-40% more revenue from existing traffic.",
     badge: "CRO Playbook",
+    image: "https://ik.imagekit.io/90xvn3fidvl/blog-featured_tYMYohBHT.jpg",
   },
   {
-    slug: "26-principles-ecommerce",
-    title: "26 Psychology Principles Applied to E‑commerce",
+    slug: "case-study-leathers",
+    title: "How Latico Leathers Boosted Conversions by 18%",
     excerpt:
-      "A field guide to applying behavioral science—26 principles with practical playbooks for product pages, cart, and checkout.",
-    badge: "Behavioral Science",
+      "A premium leather brand's conversion funnel through psychology-driven design and user experience refinement.",
+    badge: "Case Study",
+    image: "https://ik.imagekit.io/90xvn3fidvl/case-study-cover_814Z5BK9b.jpg",
   },
 ]
 
 export default function BlogIndexPage() {
   return (
+    <>
+    <Header />
     <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
         <header className="mb-10 text-center">
@@ -33,7 +39,7 @@ export default function BlogIndexPage() {
             >
               <div className="aspect-[16/9] bg-secondary/40" aria-hidden="true">
                 <img
-                  src={`/.jpg?height=360&width=640&query=${encodeURIComponent(p.title)}`}
+                  src={`${(p.image)}`}
                   alt=""
                   className="w-full h-full object-cover"
                 />
@@ -53,5 +59,7 @@ export default function BlogIndexPage() {
         </div>
       </div>
     </main>
+    <Footer />
+    </>
   )
 }

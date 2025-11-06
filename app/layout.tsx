@@ -5,9 +5,8 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Reach.ist - E-commerce CRO & Meta Marketing Agency',
+  description: 'Helping e-commerce brands unlock measurable growth and build strong brand equity through CRO and meta marketing',
 }
 
 export default function RootLayout({
