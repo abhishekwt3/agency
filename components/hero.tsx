@@ -20,12 +20,12 @@ export function Hero() {
 
             {/* Headline */}
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-balance">
-             On same traffic<br/>and Ad spend get -<span className="font-medium"> 40% more sales</span> 
+             Same traffic<br/> same Ad spend <span className="font-medium"> 40% more sales</span> 
             </h1>
 
             {/* Subcopy */}
             <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
-We boost revenue by leveraging how visitors engage with your site — their clicks, scrolls, and paths to purchase. Using data-driven insights, we refine layouts, enhance product pages, and streamline checkout creating a seamless shopping experience that converts more.               
+              Without increasing your ad spend get more sales by optimizing your conversion funnel. We refine your landing pages, simplify your user journey, and optimize every interaction so your existing traffic converts at a higher rate.
          </p>
             {/* <p>If your Return on Ad Spend isn't good enough, the problem isn't your ads, product, or even pricing. It usually the conversion funnel.</p> */}
 

@@ -90,11 +90,14 @@ export function BookingModal({ children }: BookingModalProps) {
       })
 
       if (response.ok) {
+        setOpen(false)
+        setTimeout(() => {
         toast({
           title: "Booking Confirmed 🎉",
           description: "Your strategy call has been successfully booked.",
         })
-        setOpen(false)
+      }, 200)
+        
         setSelectedDate(undefined)
         setSelectedTime("")
         setFormData({ name: "", email: "", mobile: "", message: "" })

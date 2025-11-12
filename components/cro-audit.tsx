@@ -216,7 +216,7 @@ export function CroAudit() {
     setAnalysisResult(null)
 
     try {
-      const response = await fetch("http://api.reach.ist/api/analyze", {
+      const response = await fetch("https://api.reach.ist/api/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
