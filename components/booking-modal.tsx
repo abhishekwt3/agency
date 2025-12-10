@@ -10,6 +10,8 @@ import { Label } from "@/components/ui/label"
 import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 import { format, isSunday } from "date-fns"
 import { useToast } from "@/components/ui/use-toast"
+import { fbq } from "@/lib/fpixel"
+
 
 const HOLIDAYS = [
   new Date(2025, 0, 1), // New Year
@@ -90,6 +92,7 @@ export function BookingModal({ children }: BookingModalProps) {
       })
 
       if (response.ok) {
+        fbq("track", "Lead")
         setOpen(false)
         setTimeout(() => {
         toast({
@@ -124,7 +127,10 @@ export function BookingModal({ children }: BookingModalProps) {
   return (
     <>
       <Button
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          fbq("track", "Contact") 
+          setOpen(true)
+        }}
         variant="ghost"
         className="p-0 h-auto font-inherit text-inherit hover:bg-transparent"
         asChild
